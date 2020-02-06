@@ -1,4 +1,4 @@
-# testgui
+# getting_start_vues_js
 
 ## Project setup
 ```
