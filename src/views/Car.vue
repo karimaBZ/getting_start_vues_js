@@ -1,18 +1,22 @@
 <template>
   <div>
-    <CarForm  @clicked="addCar"/>
+    <CarForm @clicked="addCar" />
     <ul v-for="car in cars" :key="car.name">
       <li>{{car.name}}</li>
       <li>{{car.model}}</li>
       <li>{{car.year}}</li>
     </ul>
-    
     <p>Nombre de voitures : {{counter}}</p>
+    <label>Recherche</label>
+    <input type="text" v-model="findCar" />
+    <ul>
+      <li :key="car.name" v-for="car in filtredCar">{{car.name}} | {{car.model}} | {{car.year}}</li>
+    </ul>
   </div>
 </template>
 
 <script>
-import CarForm from '@/components/Car.vue'
+import CarForm from "@/components/Car.vue";
 export default {
   name: "car",
   components: {
@@ -20,17 +24,24 @@ export default {
   },
   data() {
     return {
-      cars: []
+      cars: [],
+      findCar: ""
     };
   },
   methods: {
-    addCar (value) {
+    addCar(value) {
       this.cars.push(value);
     }
   },
   computed: {
     counter() {
       return this.cars.length;
+    },
+    filtredCar() {
+      var filtering = new RegExp(this.findCar, "i");
+      return this.cars.filter(function(el) {
+        return String(el).match(filtering);
+      });
     }
   }
 };
@@ -38,6 +49,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 ul {
-list-style-type: square;
+  list-style-type: square;
 }
 </style>
