@@ -2,8 +2,8 @@
   <div>
     <CarForm @clicked="addCar" />
     <ul v-for="car in cars" :key="car.name">
-      <li>{{car.name}}</li>
-      <li>{{car.model}}</li>
+      <li>{{car.name | uppercase}}</li>
+      <li>{{car.model | uppercase }}</li>
       <li>{{car.year}}</li>
       <li>{{car.price}}</li>
     </ul>
