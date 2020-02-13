@@ -8,7 +8,7 @@
     <input type="text" v-model="year" />
     <label>Car Price en DT</label>
     <input type="text" v-model="price" />
-    <p>{{validatePrice}}</p>
+    <p v-font="24">{{validatePrice}}</p>
     <button @click="handelClick()">Add Car</button>
   </div>
 </template>
@@ -42,8 +42,8 @@ export default {
       // eslint-disable-next-line no-useless-escape
       const valid = /^d*.?d*$/;
       if (valid.test(this.price)) {
-        return this.price;
-      } else return 0;
+        return 'not valide price';
+      } else return 'valide price';
     }
   }
 };

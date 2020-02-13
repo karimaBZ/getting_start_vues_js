@@ -8,6 +8,11 @@ Vue.config.productionTip = false
 // Vue.filter('uppercase', function(v) {
 //   return v.toUpperCase();
 // })
+Vue.directive("font", {
+  bind: function(el, binding) {
+    el.style.fontsize= binding.value + 'px'
+  }
+})
 
 new Vue({
   router,
