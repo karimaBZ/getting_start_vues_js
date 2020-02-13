@@ -5,12 +5,13 @@
       <li>{{car.name}}</li>
       <li>{{car.model}}</li>
       <li>{{car.year}}</li>
+      <li>{{car.price}}</li>
     </ul>
     <p>Nombre de voitures : {{counter}}</p>
     <label>Recherche</label>
     <input type="text" v-model="findCar" />
     <ul>
-      <li :key="car.name" v-for="car in filtredCar">{{car.name}} | {{car.model}} | {{car.year}}</li>
+      <li :key="car.name" v-for="car in filtredCar">{{car.name}} | {{car.model}} | {{car.year}} | {{car.price}}</li>
     </ul>
   </div>
 </template>
@@ -25,7 +26,8 @@ export default {
   data() {
     return {
       cars: [],
-      findCar: ""
+      findCar: "",
+
     };
   },
   methods: {
@@ -43,6 +45,9 @@ export default {
         return String(el).match(filtering);
       });
     }
+  },
+  watch: {
+
   }
 };
 </script>

@@ -6,6 +6,9 @@
     <input type="text" v-model="model" />
     <label>Car Year</label>
     <input type="text" v-model="year" />
+    <label>Car Price en DT</label>
+    <input type="text" v-model="price" />
+    <p>{{validatePrice}}</p>
     <button @click="handelClick()">Add Car</button>
   </div>
 </template>
@@ -20,16 +23,27 @@ export default {
     return {
       name: "",
       model: "",
-      year: ""
+      year: "",
+      price: 0
     };
   },
   methods: {
-    handelClick () {
-      this.$emit('clicked', {
+    handelClick() {
+      this.$emit("clicked", {
         name: this.name,
         model: this.model,
-        year: this.year
-      })
+        year: this.year,
+        price: this.price
+      });
+    }
+  },
+  computed: {
+    validatePrice() {
+      // eslint-disable-next-line no-useless-escape
+      const valid = /^d*.?d*$/;
+      if (valid.test(this.price)) {
+        return this.price;
+      } else return 0;
     }
   }
 };
